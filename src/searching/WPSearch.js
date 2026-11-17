@@ -46,7 +46,7 @@ export default class WPSearch extends BaseSearch {
                     statusCode: 403
                 });
             } else {
-                _this._ogapi.Napi.post(_this._resource, filter, _this._timeout, _this._getExtraHeaders(), _this._getUrlParameters())
+                _this._ogapi.Napi._searchPost(_this._resource, filter, _this._timeout, _this._getExtraHeaders(), _this._getUrlParameters())
                     .then(response => {
                         let statusCode = response.statusCode;
                         let body = response.body;

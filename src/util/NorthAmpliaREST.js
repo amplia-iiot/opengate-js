@@ -158,7 +158,7 @@ export default class NorthAmpliaREST {
      * @return {Promise}
      */
     get(url, timeout, headers, parameters, asBlob, serviceBaseURL) {
-        const rejected = this._rejectDuplicatedBase(url, serviceBaseURL);
+        const rejected = this._guard('GET', url, serviceBaseURL);
         if (rejected) return rejected;
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         logger.info('GET', _url);
@@ -177,7 +177,7 @@ export default class NorthAmpliaREST {
      * @return {Promise}
      */
     patch(url, data, timeout, headers, parameters, serviceBaseURL) {
-        const rejected = this._rejectDuplicatedBase(url, serviceBaseURL);
+        const rejected = this._guard('PATCH', url, serviceBaseURL);
         if (rejected) return rejected;
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         logger.info('PATCH', _url);
@@ -197,7 +197,7 @@ export default class NorthAmpliaREST {
      * @return {Promise}
      */
     post(url, data, timeout, headers, parameters, serviceBaseURL) {
-        const rejected = this._rejectDuplicatedBase(url, serviceBaseURL);
+        const rejected = this._guard('POST', url, serviceBaseURL);
         if (rejected) return rejected;
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         logger.info('POST', _url);
@@ -218,7 +218,7 @@ export default class NorthAmpliaREST {
      * @return {Promise}
      */
     post_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {
-        const rejected = this._rejectDuplicatedBase(url, serviceBaseURL);
+        const rejected = this._guard('POST', url, serviceBaseURL);
         if (rejected) return rejected;
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         logger.info('POST_MULTIPART', _url);
@@ -240,7 +240,7 @@ export default class NorthAmpliaREST {
      * @return {Promise}
      */
     put(url, data, timeout, headers, parameters, serviceBaseURL) {
-        const rejected = this._rejectDuplicatedBase(url, serviceBaseURL);
+        const rejected = this._guard('PUT', url, serviceBaseURL);
         if (rejected) return rejected;
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         logger.info('PUT', _url);
@@ -269,7 +269,7 @@ export default class NorthAmpliaREST {
      * @return {Promise}
      */
     put_multipart(url, formData, events, timeout, headers, parameters, serviceBaseURL) {
-        const rejected = this._rejectDuplicatedBase(url, serviceBaseURL);
+        const rejected = this._guard('PUT', url, serviceBaseURL);
         if (rejected) return rejected;
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         logger.info('PUT_MULTIPART', _url);
@@ -353,7 +353,7 @@ export default class NorthAmpliaREST {
      * @return {Promise}
      */
     delete(url, timeout, headers, parameters, body, serviceBaseURL) {
-        const rejected = this._rejectDuplicatedBase(url, serviceBaseURL);
+        const rejected = this._guard('DELETE', url, serviceBaseURL);
         if (rejected) return rejected;
         const _url = this._createUrl(url, parameters, serviceBaseURL);
         logger.info('DELETE', _url);
@@ -398,6 +398,46 @@ export default class NorthAmpliaREST {
         });
 
         return this._url(this._options) + '/' + this._getDefaultBaseURL(serviceBaseURL) + '/' + encode.join('/');
+    }
+
+    /**
+     * POST for a search, which reads. The search layer calls this instead of `post` so that a
+     * read-only client lets it through; the mark lasts only for the synchronous guard inside `post`.
+     * @return {Promise}
+     */
+    _searchPost(url, data, timeout, headers, parameters, serviceBaseURL) {
+        this._searchIntent = true;
+        try {
+            return this.post(url, data, timeout, headers, parameters, serviceBaseURL);
+        } finally {
+            this._searchIntent = false;
+        }
+    }
+
+    /** @return {Promise|null} a rejection to return before sending, or null to go ahead. */
+    _guard(method, url, serviceBaseURL) {
+        return this._rejectDuplicatedBase(url, serviceBaseURL) || this._rejectWrite(method, url);
+    }
+
+    /**
+     * With `readOnly`, everything but GET and search POSTs is refused before it leaves: the search
+     * builders, and a free `post` to a `search/...` path. It guards against mistakes, not against
+     * code that holds the client and means harm -- `_searchPost` and `fetch` are one call away. The
+     * server, or a proxy in front of it, remains the boundary.
+     * @return {Promise|null}
+     */
+    _rejectWrite(method, url) {
+        if (!this._options.readOnly || method === 'GET') return null;
+        const isSearch = this._searchIntent || (typeof url === 'string' && /^\/*search\//.test(url));
+        if (method === 'POST' && isSearch) return null;
+
+        const message = 'OGAPI: read-only client refused ' + method + ' ' + url;
+        return q.reject({
+            statusCode: 403,
+            data: { errors: [{ code: 403, message: message }] },
+            reason: 'read-only',
+            cause: new Error(message)
+        });
     }
 
     /**
