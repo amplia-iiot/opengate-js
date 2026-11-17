@@ -77,7 +77,7 @@ export default class BaseSearch {
     execute() {
         var defered = q.defer();
         var promise = defered.promise;
-        this._ogapi.Napi.post(
+        this._ogapi.Napi._searchPost(
             this._resource,
             this._filter(),
             this._timeout,
@@ -146,7 +146,7 @@ export default class BaseSearch {
             Accept: 'text/plain'
         });
 
-        this._ogapi.Napi.post(
+        this._ogapi.Napi._searchPost(
             this._resource,
             filter,
             this._timeout,
@@ -205,7 +205,7 @@ export default class BaseSearch {
                     statusCode: 403
                 });
             } else {
-                _this._ogapi.Napi.post(
+                _this._ogapi.Napi._searchPost(
                     _this._resource,
                     filter,
                     _this._timeout,

@@ -32,7 +32,7 @@ export default class EntitySearch extends Search {
         var defered = q.defer();
         var promise = defered.promise;
         var parameters = this._getUrlParameters();
-        this._ogapi.Napi.post(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), parameters)
+        this._ogapi.Napi._searchPost(this._resource, this._filter(), this._timeout, this._getExtraHeaders(), parameters)
             .then(response => {
                 let resultQuery = response.body;
                 let statusCode = response.statusCode;

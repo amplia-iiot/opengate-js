@@ -77,6 +77,27 @@ rejected before it is sent, with `statusCode` `400` and `reason: 'invalid-path'`
 | `mocks`                    | Answers matching requests locally instead of calling OpenGate — see [Transport](#transport).                                        |
 | `_internalCountriesFilter` | Required by `newCountriesCatalog()`; see its JSDoc. `{ organization, identifier, ds }`.                                             |
 | `logger`                   | Where the library's own messages go. `false` silences it, `true` reports everything — see [Logging](#logging).                      |
+| `readOnly`                 | `true` refuses every request but GET and searches, before it leaves — see [Read-only clients](#read-only-clients).                  |
+
+### Read-only clients
+
+For code that should only look, such as a dashboard widget or code written by a model, pass `readOnly: true`. GET requests and
+searches go through: every search builder, and `ogapi.Napi.post` to a `search/...` path. Anything else, North or South, is
+rejected before it is sent:
+
+```js
+const ogapi = new OpenGateAPI({ url: 'https://opengate.example.com', apiKey: process.env.OPENGATE_API_KEY, readOnly: true });
+
+try {
+    await ogapi.Napi.delete('provision/organizations/my-organization/devices/my-device');
+} catch (error) {
+    error.statusCode; // 403
+    error.reason; // 'read-only'
+}
+```
+
+It prevents mistakes, not misuse. Code that holds the client can still reach the network some other way, so the permissions
+that actually protect the data belong to the key or token you hand it, and to the server or proxy in front of it.
 
 ## What it covers
 

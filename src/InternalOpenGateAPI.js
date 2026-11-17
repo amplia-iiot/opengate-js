@@ -183,7 +183,8 @@ const registerBeforeStartHook = setBeforeStart;
 export default class InternalOpenGateAPI {
     /**
      * Constructor
-     * @param {{ url: string,port: string,version: string,apiKey: string}} _options - this is configuration about Opengate North API.
+     * @param {{ url: string,port: string,version: string,apiKey: string,readOnly?: boolean}} _options - this is configuration about Opengate North API.
+     * `readOnly: true` refuses every request but GET and searches before it is sent; see the README.
      * @param {AmpliaREST} ampliaREST - this is a backend selected to manage a request to Opengate North API.
      */
     constructor(northAmpliaREST, southAmpliaREST, _options) {
