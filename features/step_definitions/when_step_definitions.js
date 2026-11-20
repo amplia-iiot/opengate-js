@@ -941,6 +941,26 @@ When(/^I update it$/, function () {
     }
 });
 
+When(/^I cluster it$/, function () {
+    var _this = this;
+    _this.error = undefined;
+    _this.responseData = undefined;
+
+    try {
+        return _this.util
+            .clustering()
+            .then(function (data) {
+                _this.responseData = data;
+            })
+            .catch(function (err) {
+                _this.responseData = err;
+                _this.error = err;
+            });
+    } catch (err) {
+        this.error = err;
+    }
+});
+
 When(/^I request reset password$/, function () {
     var _this = this;
     _this.error = undefined;

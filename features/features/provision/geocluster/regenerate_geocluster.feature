@@ -1,4 +1,4 @@
-# features/provision/areas/regenerate_geocluster.feature
+# features/provision/geocluster/regenerate_geocluster.feature
 @create_provision
 @provision
 @geocluster
@@ -13,5 +13,5 @@ I want to regenerate a geocluster to update the geoclasterized entities
         And an ogapi "geocluster builder" util
         And I want to create an "geocluster"
         And the "identifier" "entities.default"
-        And I update it
+        And I cluster it
         Then response code should be: 200
