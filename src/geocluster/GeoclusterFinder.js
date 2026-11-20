@@ -54,6 +54,21 @@ export default class GeoclusterFinder extends ProvisionGenericFinder {
     }
 
     /**
+     * Find the status of the geocluster engine: its MongoDB server, without credentials, and the memory of the service.
+     * It is global, not of a geocluster, and requires the permission `prov.admin.supercluster`. This execute a GET
+     * http method
+     * @test
+     *   ogapi.newGeoclusterFinder().findEngineStatus().then().catch();
+     * @return {Promise}
+     */
+    findEngineStatus() {
+        // Without url parameters, _composeUrl appends the id as a path: provision/geocluster/engine/status
+        this._id = 'engine/status';
+        this._setUrlParameters();
+        return this._execute();
+    }
+
+    /**
      * @return {String} This returns a string with the URL of the request.
      * @private
      */

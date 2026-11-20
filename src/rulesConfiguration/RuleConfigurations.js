@@ -112,8 +112,8 @@ export default class RuleConfigurations extends BaseProvision {
      * @return {RulesConfigurations}
      */
     withName(name) {
-        if (typeof name !== 'string' || name.length === 0 || name.length > 50)
-            throw new Error('Parameter name must be a string, cannot be empty and has a maximum length of 50');
+        if (typeof name !== 'string' || name.length === 0 || name.length > 250)
+            throw new Error('Parameter name must be a string, cannot be empty and has a maximum length of 250');
         this._name = name;
         return this;
     }
@@ -124,8 +124,7 @@ export default class RuleConfigurations extends BaseProvision {
      * @return {RulesConfigurations}
      */
     withDescription(description) {
-        if (typeof description !== 'string' || description.length > 250)
-            throw parameterError('OGAPI_STRING_PARAMETER_MAX_LENGTH_250', { parameter: 'description' });
+        if (typeof description !== 'string') throw parameterError('OGAPI_STRING_PARAMETER', { parameter: 'description' });
         this._description = description;
         return this;
     }

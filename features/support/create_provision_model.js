@@ -420,7 +420,15 @@ module.exports = {
                 script: 'withScript'
             },
             geocluster: {
-                identifier: 'withIdentifier'
+                identifier: 'withIdentifier',
+                name: 'withName',
+                title: 'withTitle',
+                channels: 'withChannels',
+                projection: 'withProjection',
+                filter: 'withFilter',
+                aggregation: 'withAggregation',
+                regenerationCronPeriod: 'withRegenerationCronPeriod',
+                collection: 'withCollection'
             },
             transformer: {
                 identifier: 'withIdentifier',
